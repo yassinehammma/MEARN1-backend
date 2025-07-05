@@ -20,9 +20,8 @@ app.use(express.json());
 // dotenv config
 require('dotenv').config();
 
-app.use((req,res) => {
-  res.send("API is running ...")
-})
+
+
 
 //PORT configuration
 const PORT = process.env.PORT || process.env.PORT_2 || 7666
@@ -47,3 +46,8 @@ app.use('/api/computers', require('./routes/computerRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
 
 app.use('/api/users', require('./routes/userRoutes'));
+
+// Catch-all 404 handler (after all routes)
+app.use((req, res) => {
+  res.status(404).json({ message: "API endpoint not found" });
+});
