@@ -46,5 +46,5 @@ app.use('/api/users', require('./routes/userRoutes'));
 
 // Catch-all 404 handler (after all routes)
 app.use((req, res) => {
-  res.status(404).json({ message: "API endpoint not found" });
+  res.status(200).send({ message: "API is running" });
 });
